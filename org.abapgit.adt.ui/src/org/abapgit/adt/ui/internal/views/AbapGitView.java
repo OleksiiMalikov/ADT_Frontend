@@ -101,17 +101,16 @@ public class AbapGitView extends ViewPart {
 				if (AbapGitView.this == part) {
 					return;
 				}
+				
+				AbapGitView.this.lastSelection = selection;
 
-				if (selection instanceof IStructuredSelection) {
-					IStructuredSelection structSelection = (IStructuredSelection) selection;
-					AbapGitView.this.lastSelection = structSelection;
-
-					if (!checkIfPageIsVisible()) {
-						return;
-					}
-
-					showLastSelectedElement();
+				if (!checkIfPageIsVisible()) {
+					return;
 				}
+
+				showLastSelectedElement();
+				
+				
 			} finally {
 				this.isUpdatingSelection = false;
 			}
